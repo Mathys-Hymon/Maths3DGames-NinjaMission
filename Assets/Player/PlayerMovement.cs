@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
             }
             CameraInput.x += Input.GetAxisRaw("Mouse Y") * MouseSensitivity;
             CameraInput.y += Input.GetAxisRaw("Mouse X") * MouseSensitivity;
+            CameraInput.x = Mathf.Clamp(CameraInput.x, -60, 60);
 
             if (!canStab && susOmeter <= 15)
             {

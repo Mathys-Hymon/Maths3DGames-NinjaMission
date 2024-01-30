@@ -61,7 +61,10 @@ public class EnemyScript : MonoBehaviour
                 else if (PlayerPos.magnitude <= detectionZone / 5 && Vector3.Dot(transform.forward, PlayerPos.normalized) > 1 - (stabAngle / 90) && Mathf.Abs(Vector3.Dot(PlayerPos, PlayerMovement.instance.transform.forward)) > 0.9f && !touchWall)
                 {
                     transform.GetChild(3).GetChild(0).gameObject.SetActive(false);
-                    transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
+                    if(PlayerMovement.instance.getCanStab())
+                    {
+                        transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
+                    }
                     if (Input.GetMouseButtonDown(0) && PlayerMovement.instance.getCanStab() && !dead)
                     {
                         gameObject.GetComponent<Rigidbody>().freezeRotation = false;
